@@ -1,0 +1,24 @@
+{
+  "name": "yuki-pet",
+  "private": true,
+  "version": "0.1.0",
+  "description": "长门有希桌宠：跟随 AI agent 工作状态",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zlc0099/yuki.git"
+  },
+  "homepage": "https://github.com/zlc0099/yuki",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build:portable": "tauri build --no-bundle",
+    "slice": "node tools/slice-sheet.js && node tools/slice-extra.js && node tools/slice-game.js && node tools/slice-music.js",
+    "hooks:install": "node tools/install-claude-hooks.js",
+    "hooks:uninstall": "node tools/install-claude-hooks.js --uninstall"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4",
+    "pngjs": "^7.0.0"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "YukiPet",
+  "version": "0.1.0",
+  "identifier": "com.dusk.yukipet",
+  "build": {
+    "frontendDist": "../src"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "pet",
+        "title": "长门有希",
+        "url": "pet.html",
+        "width": 200,
+        "height": 320,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "skipTaskbar": true,
+        "shadow": false
+      },
+      {
+        "label": "card",
+        "title": "Token 用量",
+        "url": "card.html",
+        "width": 260,
+        "height": 220,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "skipTaskbar": true,
+        "shadow": false,
+        "visible": false
+      },
+      {
+        "label": "toast",
+        "title": "提示",
+        "url": "toast.html",
+        "width": 180,
+        "height": 90,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "skipTaskbar": true,
+        "shadow": false,
+        "visible": false,
+        "focusable": false
+      },
+      {
+        "label": "panel",
+        "title": "大小",
+        "url": "panel.html",
+        "width": 240,
+        "height": 96,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "skipTaskbar": true,
+        "shadow": false,
+        "visible": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": false
+  }
+}

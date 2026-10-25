@@ -1,0 +1,29 @@
+# 依赖与构建产物
+node_modules/
+src-tauri/target/
+src-tauri/gen/
+dist/
+build/
+
+# 本地调试 / 预览
+.shots/
+*.log
+npm-debug.log*
+.preview*
+.verify-*
+*.fit.png
+*.clean.png
+
+# 环境变量与密钥
+.env
+.env.*
+!.env.example
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp

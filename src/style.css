@@ -1,0 +1,363 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+body.pet {
+  width: 200px;
+  height: 320px;
+  cursor: grab;
+}
+
+body.pet.dragging {
+  cursor: grabbing;
+}
+
+#pet {
+  display: block;
+}
+
+/* ---------- 账本：漫画椭圆气泡 ---------- */
+body.card {
+  width: 260px;
+  height: 220px;
+  padding: 8px 8px 20px;
+  box-sizing: border-box;
+}
+
+.bubble {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding: 24px 30px 28px;
+  background: #fffdf6;
+  border: 2px solid #2f2a35;
+  border-radius: 50%;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.26);
+  color: #2f2a35;
+  font-size: 12px;
+}
+
+.bubble .close {
+  position: absolute;
+  top: 40px;
+  right: 36px;
+  border: none;
+  background: transparent;
+  color: #6c6478;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.bubble .close:hover {
+  color: #111;
+}
+
+.quota {
+  text-align: center;
+}
+
+.quota-label {
+  font-size: 11px;
+  color: #7d7489;
+}
+
+.quota-value {
+  margin-top: 1px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #b94a2f;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.quota-note {
+  margin-top: 1px;
+  font-size: 10px;
+  color: #8d8697;
+}
+
+.quota-spend {
+  margin-top: 3px;
+  font-size: 11px;
+  color: #b4532a;
+  font-variant-numeric: tabular-nums;
+}
+
+.month-line {
+  margin-top: 1px;
+  font-size: 10.5px;
+  color: #5d5668;
+  font-variant-numeric: tabular-nums;
+}
+
+.month-line.sub {
+  color: #8d8697;
+  font-size: 10px;
+}
+
+.summary {
+  font-size: 11px;
+  color: #5d5668;
+  text-align: center;
+  padding: 4px 10px;
+  border-top: 1px dashed rgba(47, 42, 53, 0.24);
+  border-bottom: 1px dashed rgba(47, 42, 53, 0.24);
+  background: rgba(255, 240, 214, 0.4);
+}
+
+.sessions {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0 8px;
+  width: 100%;
+  box-sizing: border-box;
+  max-height: 78px;
+  overflow-y: auto;
+  font-size: 11px;
+}
+
+.sessions li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+.sessions li:nth-child(odd) {
+  background: rgba(47, 42, 53, 0.045);
+}
+
+.proj {
+  font-weight: 600;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.total {
+  color: #b4532a;
+  font-variant-numeric: tabular-nums;
+}
+
+.empty {
+  justify-content: center;
+  color: #9a93a5;
+}
+
+.bubble footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 2px;
+  color: #8d8697;
+  font-size: 10.5px;
+}
+
+.bubble footer button {
+  border: 1.5px solid #2f2a35;
+  background: #fff;
+  color: #2f2a35;
+  border-radius: 8px;
+  font-size: 10.5px;
+  padding: 1px 8px;
+  cursor: pointer;
+}
+
+.bubble footer button:hover {
+  background: #f6eedd;
+}
+
+.tail {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 20px;
+  height: 20px;
+  background: #fffdf6;
+  border-right: 2px solid #2f2a35;
+  border-bottom: 2px solid #2f2a35;
+  transform: translateX(-50%) rotate(45deg);
+  border-bottom-right-radius: 3px;
+}
+
+/* ---------- 桌宠旁的小气泡 ---------- */
+body.toast {
+  width: 180px;
+  height: 100vh;
+  position: relative;
+  padding: 6px 16px 18px 14px;
+  box-sizing: border-box;
+}
+
+.toast-bubble {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  background: #fffdf6;
+  border: 2px solid #2f2a35;
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #2f2a35;
+  text-align: center;
+}
+
+.toast-bubble span {
+  display: block;
+  width: 100%;
+  /* 椭圆内可安全容纳的文字区域（约半高 54%），超出后由脚本缩小字号 */
+  max-height: 54%;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 1.28;
+  word-break: break-word;
+}
+
+body.toast.pop .toast-bubble {
+  animation: toast-pop 0.18s ease-out;
+}
+
+body.toast.alert .toast-bubble {
+  background: #fff3f1;
+  border-color: #b93a2f;
+  color: #b93a2f;
+}
+
+@keyframes toast-pop {
+  0% { transform: scale(0.6); }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.toast-tail {
+  display: none;
+}
+
+.tail-dot {
+  position: absolute;
+  background: #fffdf6;
+  border: 1.5px solid #2f2a35;
+  border-radius: 50%;
+}
+
+.tail-dot.big {
+  width: 14px;
+  height: 9px;
+}
+
+.tail-dot.small {
+  width: 9px;
+  height: 6px;
+}
+
+/* 气泡在头顶右侧 → 冒泡向左下 */
+.tail-dot.big.left {
+  left: calc(50% - 20px);
+  bottom: 10px;
+}
+
+.tail-dot.small.left {
+  left: calc(50% - 32px);
+  bottom: 2px;
+}
+
+/* 气泡在头顶左侧 → 冒泡向右下 */
+.tail-dot.big.right {
+  left: calc(50% + 6px);
+  bottom: 10px;
+}
+
+.tail-dot.small.right {
+  left: calc(50% + 17px);
+  bottom: 2px;
+}
+
+body.toast.alert .tail-dot {
+  background: #fff3f1;
+  border-color: #b93a2f;
+}
+
+/* ---------- 大小调节面板 ---------- */
+body.panel {
+  width: 240px;
+  height: 96px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.size-panel {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fffdf6;
+  border: 2px solid #2f2a35;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+  color: #2f2a35;
+}
+
+.size-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.size-val {
+  margin-left: auto;
+  color: #b4532a;
+  font-variant-numeric: tabular-nums;
+}
+
+.size-head button {
+  border: none;
+  background: transparent;
+  color: #6c6478;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.size-panel input[type="range"] {
+  width: 100%;
+  accent-color: #b4532a;
+  cursor: pointer;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(47, 42, 53, 0.22);
+  border-radius: 3px;
+}

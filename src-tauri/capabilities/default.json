@@ -1,0 +1,32 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "pet and card window permissions",
+  "windows": ["pet", "card", "toast", "panel"],
+  "permissions": [
+    "core:default",
+    "core:event:allow-emit-to",
+    "core:menu:default",
+    "core:menu:allow-popup",
+    "core:menu:allow-new",
+    "core:menu:allow-append",
+    "core:menu:allow-set-checked",
+    "core:window:allow-set-ignore-cursor-events",
+    "core:window:allow-set-focusable",
+    "core:window:allow-set-position",
+    "core:window:allow-outer-position",
+    "core:window:allow-outer-size",
+    "core:window:allow-inner-size",
+    "core:window:allow-set-size",
+    "core:window:allow-scale-factor",
+    "core:window:allow-current-monitor",
+    "core:window:allow-available-monitors",
+    "core:window:allow-start-dragging",
+    "core:window:allow-set-always-on-top",
+    "core:window:allow-set-focus",
+    "core:window:allow-show",
+    "core:window:allow-hide",
+    "core:window:allow-is-visible",
+    "core:window:allow-close"
+  ]
+}
